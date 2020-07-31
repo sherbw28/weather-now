@@ -1,0 +1,7 @@
+<h1>天気投稿ページ</h1>
+
+<%= form_with(model: @weather, local: true) do |f| %>
+  <%= f.label :content, "天気" %>
+  <%= f.text_field :content %>
+  <%= f.submit "提出" %>
+<% end %>

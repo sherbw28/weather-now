@@ -1,0 +1,6 @@
+<h1>id: <%= @weather.id %>の地域の詳細ページ</h1>
+<p><%= @weather.content %></p>
+
+<%= link_to "もう一度投稿する", new_weather_path %>
+<%= link_to "天気を修正する", edit_weather_path %>
+<%= link_to "天気を削除する", @weather, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
