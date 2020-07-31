@@ -1,10 +1,11 @@
 class WeathersController < ApplicationController
+  before_action :set_weather, only: [:show, :edit, :update, :destroy]
+  
   def index
     @weathers = Weather.all
   end
 
   def show
-    @weather = Weather.find(params[:id])
   end
 
   def new
@@ -24,11 +25,9 @@ class WeathersController < ApplicationController
   end
 
   def edit
-    @weather = Weather.find(params[:id])
   end
 
   def update
-    @weather = Weather.find(params[:id])
     
     if @weather.update(weather_params)
       flash[:success] = "編集しました"
@@ -40,7 +39,6 @@ class WeathersController < ApplicationController
   end
 
   def destroy
-    @weather = Weather.find(params[:id])
     @weather.destroy
     
     flash[:success] = "天気を削除しました"
@@ -48,6 +46,10 @@ class WeathersController < ApplicationController
   end
   
   private
+  
+  def set_weather
+    @weather = Weather.find(params[:id])
+  end
   
   def weather_params
     params.require(:weather).permit(:content)
