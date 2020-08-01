@@ -3,6 +3,7 @@
 <ul>  
   <% @weathers.each do |weather| %>
     <li><%= weather.content %></li>
+    <li><%= weather.location %></li>
     <p>各地の天気詳細ページへ<%= link_to weather.id, weather_path(weather) %></p>
   <% end %>  
 </ul>

@@ -52,6 +52,6 @@ class WeathersController < ApplicationController
   end
   
   def weather_params
-    params.require(:weather).permit(:content)
+    params.require(:weather).permit(:content, :location)
   end
 end
