@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+(1..100).each do |number|
+    Weather.create(content: "晴れ" + number.to_s , location: "日本" + number.to_s )
+end

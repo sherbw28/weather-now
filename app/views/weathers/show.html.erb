@@ -1,7 +1,20 @@
-<h1>id: <%= @weather.id %>の地域の詳細ページ</h1>
-<p><%= @weather.content %></p>
-<p><%= @weather.location %></p>
+<h1><%= @weather.location %>の天気</h1>
 
-<%= link_to "もう一度投稿する", new_weather_path %>
-<%= link_to "天気を修正する", edit_weather_path %>
-<%= link_to "天気を削除する", @weather, method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %>
+<table class="table">
+  <tr>
+    <th>場所</th>
+    <td><%= @weather.location %></td>
+  </tr>
+  <tr>
+    <th>天気</th>
+    <td><%= @weather.content %></td>
+  </tr>
+  <tr>
+    <th>時間</th>
+    <td><%= @weather.created_at %></td>
+  </tr>
+</table>
+
+
+<%= link_to "天気を修正する", edit_weather_path, class: "btn btn-info" %>
+<%= link_to "天気を削除する", @weather, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn btn-warning" %>

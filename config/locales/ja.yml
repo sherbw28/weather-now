@@ -5,3 +5,4 @@ ja:
     attributes:
       weather:
         content: 天気
+        location: 場所

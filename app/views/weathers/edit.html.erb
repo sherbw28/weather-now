@@ -1,6 +1,3 @@
-<h1>id: <%= @weather.id %>の編集ページ</h1>
+<h1><%= @weather.location %>&ensp;:&ensp;現在情報に変更</h1>
 
 <%= render "form", weather: @weather %>
-
-
-<%= link_to "一覧に戻る", root_path %>
