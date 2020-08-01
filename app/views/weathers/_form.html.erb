@@ -1,4 +1,14 @@
 <%= form_with(model: weather, local: true) do |f| %>
+  <% if weather.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% weather.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= f.label :content, "天気" %>
   <%= f.text_field :content %>
   

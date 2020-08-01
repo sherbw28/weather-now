@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      weather: 天気
+    attributes:
+      weather:
+        content: 天気
