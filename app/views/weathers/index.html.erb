@@ -1,35 +1,15 @@
-<% if @weathers.any? %>
-  <h1>各地の天気一覧</h1>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>場所</th>
-        <th>天気</th>
-        <th>時間</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @weathers.each do |weather| %>
-        <tr>
-          <td><%= link_to weather.location, weather %></td>
-          <td><%= weather.content %></td>
-          <td><%= weather.created_at %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div>
-    <%= paginate @weathers %>
-  </div>
+<% if logged_in? %>
+  <p>ログイン完了ユーザー<%= current_user.name %></p>
+  <%= render "weathers/toppage", weathers: @weathers %>
 <% else %>
-  <h1>NOBODY HAVE NOT POSTED</h1>
-<% end %>
-
-<%= link_to "現在の天気は？", new_weather_path, class: "btn btn-info" %>
-
-<div class="center jumbotron mt-3">
-  <div class="text-center">
-    <h1 class="text-primary">MAKE NEW ACCOUT！</h1>
-    <%= link_to "新規作成", new_user_path, class: "btn btn-info btn-lg" %>
+  <div class="center jumbotron mt-3">
+    <div class="text-center">
+      <h1 class="text-primary">MAKE NEW ACCOUT！</h1>
+      <%= link_to "新規作成", new_user_path, class: "btn btn-info btn-lg" %>
+    </div>
+    <div class="text-center">
+      <h1 class="text-info">Do you have account?</h1>
+      <%= link_to "ログイン", login_path, class: "btn btn-info btn-lg" %>
+    </div>
   </div>
-</div>
+<% end %>
