@@ -1,4 +1,3 @@
-
 <% if @weathers.any? %>
   <h1>各地の天気一覧</h1>
   <table class="table table-striped">
@@ -28,3 +27,9 @@
 
 <%= link_to "現在の天気は？", new_weather_path, class: "btn btn-info" %>
 
+<div class="center jumbotron mt-3">
+  <div class="text-center">
+    <h1 class="text-primary">MAKE NEW ACCOUT！</h1>
+    <%= link_to "新規作成", new_user_path, class: "btn btn-info btn-lg" %>
+  </div>
+</div>

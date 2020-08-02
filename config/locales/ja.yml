@@ -2,7 +2,13 @@ ja:
   activerecord:
     models:
       weather: 天気
+      user: ユーザー
     attributes:
       weather:
         content: 天気
         location: 場所
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
