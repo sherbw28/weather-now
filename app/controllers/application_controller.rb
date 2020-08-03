@@ -1,13 +1,17 @@
 class ApplicationController < ActionController::Base
-  
+
   include SessionsHelper
-  
+
   private
-  
-  def require_users_logged_in
+
+  def require_user_logged_in
     unless logged_in?
-      redirect_to root_path
+      redirect_to login_path
     end
   end
-  
+
+  def counts(user)
+    @count_weathers = user.weathers.count
+  end
+
 end

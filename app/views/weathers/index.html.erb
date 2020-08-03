@@ -1,5 +1,4 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザー<%= current_user.name %></p>
   <%= render "weathers/toppage", weathers: @weathers %>
 <% else %>
   <div class="center jumbotron mt-3">

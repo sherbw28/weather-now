@@ -13,7 +13,7 @@
         <tr>
           <td><%= link_to weather.location, weather %></td>
           <td><%= weather.content %></td>
-          <td><%= weather.created_at %></td>
+          <td><%= l weather.created_at %></td>
         </tr>
       <% end %>
     </tbody>
@@ -21,8 +21,4 @@
   <div>
     <%= paginate weathers %>
   </div>
-<% else %>
-  <h1>NOBODY HAVE NOT POSTED</h1>
 <% end %>
-
-<%= link_to "現在の天気は？", new_weather_path, class: "btn btn-info" %>

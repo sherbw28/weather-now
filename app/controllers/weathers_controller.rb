@@ -1,5 +1,7 @@
 class WeathersController < ApplicationController
+  before_action :require_user_logged_in
   before_action :set_weather, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
     @weathers = Weather.order(id: :desc).page(params[:page]).per(3)
@@ -9,11 +11,11 @@ class WeathersController < ApplicationController
   end
 
   def new
-    @weather = Weather.new
+    @weather = current_user.weathers.build
   end
 
   def create
-    @weather = Weather.new(weather_params)
+    @weather = current_user.weathers.build(weather_params)
     
     if @weather.save
       flash[:success] = "投稿を完了しました"
@@ -42,16 +44,24 @@ class WeathersController < ApplicationController
     @weather.destroy
     
     flash[:success] = "天気を削除しました"
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
   
   private
   
   def set_weather
-    @weather = Weather.find(params[:id])
+    @weather = current_user.weathers.find_by(id: params[:id])
   end
   
   def weather_params
     params.require(:weather).permit(:content, :location)
+  end
+  
+  def correct_user
+    @weather = current_user.weathers.find_by(id: params[:id])
+    unless @weather
+      flash[:danger] = "あなたの投稿のみ編集できます"
+      redirect_back(fallback_location: root_path)
+    end
   end
 end
