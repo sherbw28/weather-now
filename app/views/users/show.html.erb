@@ -5,9 +5,16 @@
          <h3 class="card-title"><%= @user.name %></h3>
       </div>
       <div class="card-body">
-        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+        <% if @user.image.url %>
+          <img class="img-fluid" src="<%= @user.image %>">
+        <% else %>
+          <img class="img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+        <% end %>
       </div>
     </div>
+    <h4 class="text-center mt-3">
+      <%= link_to "情報を更新する", edit_user_path(@user), class: "mb-4" %>
+    </h4>
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs mb-3 nav-justified">

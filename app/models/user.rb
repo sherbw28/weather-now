@@ -8,4 +8,6 @@ class User < ApplicationRecord
   
   has_many :weathers
   
+  mount_uploader :image, ImageUploader
+  
 end
